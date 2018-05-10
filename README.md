@@ -23,7 +23,12 @@ pandoc -f markdown -t docx -o docx.docx --filter=pandoc-docx-pagebreakpy
 ```markdown
 Contents before pagebreak
 
-\\newpage
-
+\newpage
 Contents after pagebreak
 ```
+
+Contents before pagebreak
+
+\newpage
+
+Contents after pagebreak

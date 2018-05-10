@@ -17,11 +17,9 @@ class DocxPagebreak(object):
 
     def action(self, elem, doc):
         if (doc.format == "docx"):
-            if isinstance(elem, pf.Para):
-                sub = elem.content[0]
-                if isinstance(sub, pf.Str) and sub.text == r"\newpage":
-                    pf.debug("Page Break")
-                    elem = self.pagebreak
+            if isinstance(elem, pf.RawBlock) and elem.text == r"\newpage":
+                pf.debug("Page Break")
+                elem = self.pagebreak
         return elem
 
 
