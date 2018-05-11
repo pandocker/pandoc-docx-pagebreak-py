@@ -4,7 +4,7 @@ Pandoc filter to insert page break or section break in docx file
 
 ### install
 
-```sh
+```bash
 pip3 install git+https://github.com/pandocker/pandoc-docx-pagebreak-py
 ```
 
@@ -17,8 +17,9 @@ pip3 install git+https://github.com/pandocker/pandoc-docx-pagebreak-py
     - It resets page header/footer style to _portrait, US-letter_ sized pages with whatever reference file you used,
     except the last section in the file. **_You will have to fix them to your preference._**
 
-```sh
-pandoc -f markdown -t docx -o docx.docx --filter=pandoc-docx-pagebreakpy
+```bash
+# Try the filter with this file like this:
+pandoc -f markdown -t docx -o docx.docx --filter=pandoc-docx-pagebreakpy README.md
 ```
 
 ### Sample
