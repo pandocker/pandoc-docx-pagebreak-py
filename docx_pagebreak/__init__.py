@@ -14,12 +14,21 @@ import panflute as pf
 
 class DocxPagebreak(object):
     pagebreak = pf.RawBlock("<w:p><w:r><w:br w:type=\"page\" /></w:r></w:p>", format="openxml")
+    sectionbreak = pf.RawBlock("<w:p><w:pPr><w:sectPr><w:type w:val=\"nextPage\" /></w:sectPr></w:pPr></w:p>",
+                               format="openxml")
 
     def action(self, elem, doc):
-        if (doc.format == "docx"):
-            if isinstance(elem, pf.RawBlock) and elem.text == r"\newpage":
-                pf.debug("Page Break")
-                elem = self.pagebreak
+        if isinstance(elem, pf.RawBlock):
+            if elem.text == r"\newpage":
+                if (doc.format == "docx"):
+                    pf.debug("Page Break")
+                    elem = self.pagebreak
+            elif elem.text == r"\newsection":
+                if (doc.format == "docx"):
+                    pf.debug("Section Break")
+                    elem = self.sectionbreak
+                else:
+                    elem = []
         return elem
 
 
