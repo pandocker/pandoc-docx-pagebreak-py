@@ -42,7 +42,7 @@ class DocxPagebreak(object):
   </w:p>
 </w:sdtContent>
 </w:sdt>
-""")
+""", format="openxml")
     def action(self, elem, doc):
         if isinstance(elem, pf.RawBlock):
             if elem.text == r"\newpage":
