@@ -16,7 +16,7 @@ class DocxPagebreak(object):
     pagebreak = pf.RawBlock("<w:p><w:r><w:br w:type=\"page\" /></w:r></w:p>", format="openxml")
     sectionbreak = pf.RawBlock("<w:p><w:pPr><w:sectPr><w:type w:val=\"nextPage\" /></w:sectPr></w:pPr></w:p>",
                                format="openxml")
-    toc = pf.RawBlock("""
+    toc = pf.RawBlock(r"""
 <w:sdt>
 <w:sdtPr>
   <w:docPartObj>
