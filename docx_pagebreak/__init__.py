@@ -43,18 +43,19 @@ class DocxPagebreak(object):
 </w:sdtContent>
 </w:sdt>
 """, format="openxml")
+
     def action(self, elem, doc):
         if isinstance(elem, pf.RawBlock):
             if elem.text == r"\newpage":
                 if (doc.format == "docx"):
                     pf.debug("Page Break")
                     elem = self.pagebreak
-            elif elem.text == r"\newsection":
-                if (doc.format == "docx"):
-                    pf.debug("Section Break")
-                    elem = self.sectionbreak
-                else:
-                    elem = []
+            # elif elem.text == r"\newsection":
+            #     if (doc.format == "docx"):
+            #         pf.debug("Section Break")
+            #         elem = self.sectionbreak
+            #     else:
+            #         elem = []
             elif elem.text == r"\toc":
                 if (doc.format == "docx"):
                     pf.debug("Table of Contents")
