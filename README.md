@@ -1,8 +1,6 @@
 # pandoc-docx-pagebreak-py
 
-Pandoc filter to insert page break or section break in docx file
-
-\toc
+Pandoc filter to insert page break or table-of-contents in docx file
 
 ### install
 
@@ -31,13 +29,22 @@ pandoc -f markdown -t docx -o docx.docx --filter=pandoc-docx-pagebreakpy README.
 ### Sample
 
 ```markdown
+Table of contents appears after this line
+
+\toc
+
 Contents before pagebreak
 
 \newpage
+
 Contents after _Page Break_
 
 Contents after **Section Break**
 ```
+
+Table of contents appears after this line
+
+\toc
 
 Contents before pagebreak
 
