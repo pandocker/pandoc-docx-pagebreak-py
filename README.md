@@ -38,8 +38,6 @@ Contents before pagebreak
 \newpage
 
 Contents after _Page Break_
-
-Contents after **Section Break**
 ```
 
 Table of contents appears after this line
@@ -51,5 +49,3 @@ Contents before pagebreak
 \newpage
 
 Contents after _Page Break_
-
-Contents after **Section Break**
