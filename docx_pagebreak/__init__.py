@@ -26,7 +26,7 @@ class DocxPagebreak(object):
 <w:sdtContent xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
   <w:p>
     <w:pPr>
-      <w:pStyle w:val="TOCHeading" />
+      <w:pStyle w:val="TOC Heading" />
     </w:pPr>
     <w:r>
       <w:t xml:space="preserve">Table of Contents</w:t>
