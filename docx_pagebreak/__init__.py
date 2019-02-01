@@ -17,24 +17,44 @@ class DocxPagebreak(object):
     sectionbreak = pf.RawBlock("<w:p><w:pPr><w:sectPr><w:type w:val=\"nextPage\" /></w:sectPr></w:pPr></w:p>",
                                format="openxml")
     toc = pf.RawBlock(r"""
-<w:sdtContent>
-    <w:p>
-        <w:pPr>
-            <w:pStyle w:val="TOC Heading" />
-        </w:pPr>
+<w:sdt>
+    <w:sdtPr>
+        <w:rPr/>
+        <w:id w:val="1221409389"/>
+        <w:docPartObj>
+            <w:docPartGallery w:val="Table of Contents"/>
+            <w:docPartUnique/>
+        </w:docPartObj>
+    </w:sdtPr>
+    <w:sdtEndPr>
+        <w:rPr>
+            <w:rFonts w:cstheme="minorBidi"/>
+            <w:bCs/>
+            <w:noProof/>
+            <w:sz w:val="20"/>
+            <w:szCs w:val="22"/>
+            <w:lang w:val="en-US"/>
+        </w:rPr>
+    </w:sdtEndPr>
+    <w:sdtContent>
+        <w:p>
+            <w:pPr>
+                <w:pStyle w:val="TOC Heading" />
+            </w:pPr>
+            <w:r>
+                <w:t>Table of Contents</w:t>
+            </w:r>
+        </w:p>
+      <w:p>
         <w:r>
-            <w:t>Table of Contents</w:t>
+          <w:fldChar w:fldCharType="begin"/>
+          <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
+          <w:fldChar w:fldCharType="separate" />
+          <w:fldChar w:fldCharType="end" />
         </w:r>
-    </w:p>
-  <w:p>
-    <w:r>
-      <w:fldChar w:fldCharType="begin"/>
-      <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
-      <w:fldChar w:fldCharType="separate" />
-      <w:fldChar w:fldCharType="end" />
-    </w:r>
-  </w:p>
-</w:sdtContent>
+      </w:p>
+    </w:sdtContent>
+</w:sdt>
 """, format="openxml")
 
     def action(self, elem, doc):
