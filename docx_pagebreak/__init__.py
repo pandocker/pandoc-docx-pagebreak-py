@@ -18,29 +18,16 @@ class DocxPagebreak(object):
                                format="openxml")
     toc = pf.RawBlock(r"""
 <w:sdt>
-<w:sdtPr>
-  <w:docPartObj>
-    <w:docPartGallery w:val="Table of Contents" />
-  </w:docPartObj>
-</w:sdtPr>
-<w:sdtContent xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-  <w:p>
-    <w:pPr>
-      <w:pStyle w:val="TOC Heading" />
-    </w:pPr>
-    <w:r>
-      <w:t xml:space="preserve">Table of Contents</w:t>
-    </w:r>
-  </w:p>
-  <w:p>
-    <w:r>
-      <w:fldChar w:fldCharType="begin" w:dirty="true" />
-      <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
-      <w:fldChar w:fldCharType="separate" />
-      <w:fldChar w:fldCharType="end" />
-    </w:r>
-  </w:p>
-</w:sdtContent>
+    <w:sdtContent xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+        <w:p>
+            <w:r>
+                <w:fldChar w:fldCharType="begin" w:dirty="true" />
+                <w:instrText xml:space="preserve">TOC \o "1-3" \h \z \u</w:instrText>
+                <w:fldChar w:fldCharType="separate" />
+                <w:fldChar w:fldCharType="end" />
+            </w:r>
+        </w:p>
+    </w:sdtContent>
 </w:sdt>
 """, format="openxml")
 
@@ -59,7 +46,9 @@ class DocxPagebreak(object):
             elif elem.text == r"\toc":
                 if (doc.format == "docx"):
                     pf.debug("Table of Contents")
-                    elem = self.toc
+                    para = [pf.Para(pf.Str("Table"), pf.Space(), pf.Str("of"), pf.Space(), pf.Str("Contents"))]
+                    div = pf.Div(*para, attributes={"custom-style": "TOC Heading"})
+                    elem = [div, self.toc]
                 else:
                     elem = []
         return elem
