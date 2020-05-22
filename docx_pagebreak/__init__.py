@@ -32,6 +32,12 @@ class DocxPagebreak(object):
 """, format="openxml")
 
     def action(self, elem, doc):
+        if isinstance(elem, (pf.Para, pf.Plain)):
+            for child in elem.content:
+                if isinstance(child, pf.Str) and child.text == r"\newpage":
+                    if (doc.format == "docx"):
+                        pf.debug("Page Break")
+                        elem = self.pagebreak
         if isinstance(elem, pf.RawBlock):
             if elem.text == r"\newpage":
                 if (doc.format == "docx"):
